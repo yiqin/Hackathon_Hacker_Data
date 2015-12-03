@@ -20,8 +20,8 @@
 	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
 	 >
   <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.uchicago</groupId>
-  <artifactId>yiqin</artifactId>
+  <groupId>edu.uchicago.yiqin</groupId>
+  <artifactId>hhdata</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
@@ -54,11 +54,6 @@
       <artifactId>junit</artifactId>
       <version>4.8.2</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.opencsv</groupId>
-    	<artifactId>opencsv</artifactId>
-    	<version>3.6</version>
     </dependency>
   </dependencies>
 
@@ -143,7 +138,7 @@
 	  </execution>
 	</executions>
 	<configuration>
-	  <finalName>uber-yiqin-0.0.1-SNAPSHOT</finalName>
+	  <finalName>uber-hhdata-0.0.1-SNAPSHOT</finalName>
 	</configuration>
       </plugin> 
       <plugin>
