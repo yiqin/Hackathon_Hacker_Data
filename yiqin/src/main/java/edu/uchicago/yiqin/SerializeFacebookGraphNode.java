@@ -50,7 +50,7 @@ public class SerializeFacebookGraphNode {
 						yearMap.put(year, 
 								SequenceFile.createWriter(finalConf,
 										SequenceFile.Writer.file(
-												new Path("/input/-" + Integer.toString(year))),
+												new Path("/mnt/scratch/yiqin/Facebook_Graph_data")),
 										SequenceFile.Writer.keyClass(IntWritable.class),
 										SequenceFile.Writer.valueClass(BytesWritable.class),
 										SequenceFile.Writer.compression(CompressionType.NONE)));
@@ -68,6 +68,7 @@ public class SerializeFacebookGraphNode {
 				}
 			};
 			processor.processNoaaDirectory(args[0]);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

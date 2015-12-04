@@ -71,9 +71,9 @@ public abstract class FacebookGraphNodeProcessor {
 			if (nextLine.length == 21) {
 				if (nextLine[3].length() < 50 && nextLine[5].length() < 20) {
 					lineNumber++;
-					System.out.println("Line # "+lineNumber);
+					// System.out.println("Line # "+lineNumber);
 				
-					System.out.println(nextLine[3]);
+					// System.out.println(nextLine[3]);
 					processLine(nextLine, file);
 				}
 			}

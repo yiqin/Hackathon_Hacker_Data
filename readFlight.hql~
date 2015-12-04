@@ -1,0 +1,12 @@
+add jar /home/mpcs53013/Hackathon_Hacker_Data/yiqin/target/yiqin-0.0.1-SNAPSHOT.jar;
+DROP TABLE IF EXISTS FacebookGraphData;
+CREATE EXTERNAL TABLE IF NOT EXISTS FacebookGraphData
+  ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.thrift.ThriftDeserializer'
+    WITH SERDEPROPERTIES (
+      'serialization.class' = 'edu.uchicago.mpcs53013.facebookGraphNode.FacebookGraphNode',
+      'serialization.format' =  'org.apache.thrift.protocol.TBinaryProtocol')
+  STORED AS SEQUENCEFILE 
+  LOCATION '/yiqin/output';
+
+SELECT f.from_name, f.group_name, f.like_count from FacebookGraphData as f limit 10;
+DESCRIBE FacebookGraphData;
