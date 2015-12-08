@@ -67,13 +67,9 @@ public abstract class FacebookGraphNodeProcessor {
 		int lineNumber = 0;
 		reader.readNext();
 		while ((nextLine = reader.readNext()) != null) {
-
 			if (nextLine.length == 21) {
-				if (nextLine[3].length() < 50 && nextLine[5].length() < 20) {
+				if (nextLine[5].startsWith("HH") || nextLine[5].startsWith("Hack")) {
 					lineNumber++;
-					// System.out.println("Line # "+lineNumber);
-				
-					// System.out.println(nextLine[3]);
 					processLine(nextLine, file);
 				}
 			}
@@ -90,15 +86,33 @@ public abstract class FacebookGraphNodeProcessor {
 	
 	FacebookGraphNode flightFromLine(String [] line) throws NumberFormatException, MissingDataException {
 		int level = 0;
-		if(line[1].length() != 0) {
-			// level = Integer.parseInt(line[1]);
+		try {
+			level = Integer.parseInt(line[1]);
+		} catch (NumberFormatException e) {
+			
 		}
+		
+		int likeCount = 0;
+		try {
+			likeCount = Integer.parseInt(line[16]);
+		} catch (NumberFormatException e) {
+			
+		}
+
+		int commentCount = 0;
+		try {
+			commentCount = Integer.parseInt(line[17]);
+		} catch (NumberFormatException e) {
+			
+		}
+		
+		
 		FacebookGraphNode summary = 
 				new FacebookGraphNode(line[0], level, line[2], line[3],line[4],
 													line[5], line[6], line[7],line[8],
 													line[9], line[10], line[11],line[12],
-													line[13], line[14], line[15],line[16],
-													line[17], line[18], line[19],line[20]
+													line[13], line[14], line[15],likeCount,
+													commentCount, line[18], line[19],line[20]
 													);
 		
 		return summary;
