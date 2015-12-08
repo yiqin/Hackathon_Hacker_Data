@@ -57,6 +57,7 @@ public class SerializeFacebookGraphNode {
 					}
 					return yearMap.get(year);
 				}
+				
 
 				@Override
 				void processFlightSummary(FacebookGraphNode summary, File file) throws IOException {

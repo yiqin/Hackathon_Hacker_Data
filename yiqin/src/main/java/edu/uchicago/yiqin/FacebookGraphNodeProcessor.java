@@ -19,8 +19,6 @@ import java.util.zip.GZIPInputStream;
 import com.opencsv.CSVReader;
 
 import edu.uchicago.mpcs53013.facebookGraphNode.FacebookGraphNode;
-import edu.uchicago.mpcs53013.weatherSummary.FlightSummary;
-
 
 public abstract class FacebookGraphNodeProcessor {
 	static class MissingDataException extends Exception {
@@ -105,7 +103,7 @@ public abstract class FacebookGraphNodeProcessor {
 		} catch (NumberFormatException e) {
 			
 		}
-		
+		// System.out.println(line[5]);
 		
 		FacebookGraphNode summary = 
 				new FacebookGraphNode(line[0], level, line[2], line[3],line[4],
