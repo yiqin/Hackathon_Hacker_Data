@@ -21,17 +21,17 @@ load_data = load '/mnt/scratch/yiqin' using SequenceFileLoader as (key:int, val:
 raw_data = foreach load_data generate flatten(ThriftBytesToTupleDef(val));
 
 -- Count activities in subgroups
-group_by_subgroup = group raw_data BY FacebookGraphNode::group_name;
-activities_count_subgroup = foreach group_by_subgroup generate group as group_name, COUNT(raw_data) as occurrences;
-activities_count_subgroup_ordered = order activities_count_subgroup by occurrences DESC;
+group_by_subgroup = group raw_data BY (FacebookGraphNode::group_id, FacebookGraphNode::group_name);
 
-A = foreach activities_count_subgroup_ordered generate $0 as id, $0, $1;
+activities_count_subgroup = foreach group_by_subgroup generate group.group_id as group_id, group.group_name as group_name, COUNT(raw_data) as count;
 
-dump A;
+activities_count_subgroup_ordered = order activities_count_subgroup by count DESC;
+
+A = foreach activities_count_subgroup_ordered generate $0, $1, $2;
 
 -- Store to HBase
-STORE activities_count_subgroup_ordered INTO 'hbase://yiqin_facebook_graph_data_by_count_activities'
- USING org.apache.pig.backend.hadoop.hbase.HBaseStorage('activities:group_name', 'activities:occurrences');
+STORE A INTO 'hbase://yiqin_facebook_graph_data_by_count_activities'
+  USING org.apache.pig.backend.hadoop.hbase.HBaseStorage('count_activities:group_name, count_activities:count');
 
 
 

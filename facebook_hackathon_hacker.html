@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+  <head>
+    <title>Submit Weather</title>
+    <link type="text/css" rel="stylesheet" href="/elegant-aero.css" />
+  </head>
+
+  <body style='background-image:URL("background.jpeg");background-repeat:repeat;background-position:center top;-webkit-background-size:100%;-moz-background-size:100%;-o-background-size:100%;background-size: 100%;'>
+    <p style="margin-bottom:5px"/>
+
+<!-- Part 1: the most popular subgroup -->
+<center>
+    <h2 class="elegant-aero" style="text-align:center;display:inline-block;color:#FFFFFF;">&nbsp;Which one is the most popular subgroup in Hackathon Hacker Community?&nbsp;</h2>
+
+    <form action="/cgi-bin/yiqin/facebook_Graph_Data_Table.pl" style="width:60%;margin:auto;position:center"  method="get" class="elegant-aero">
+
+      <label>
+	<span>&nbsp;</span><input type="submit" value="Detail">
+      </label>
+    </form>
+
+<!-- Part 2: top active users -->
+    <h2 class="elegant-aero" style="text-align:center;display:inline-block;color:#FFFFFF;">&nbsp;Who are most active users in each subgroup? Who spend longest time on Facebook?&nbsp;</h2>
+</center>
+    <form action="/cgi-bin/yiqin/top_user.pl" style="background:#FFFFFF;width:60%;margin:auto"  method="get" class="elegant-aero">
+
+  <input type="radio" name="group_name" value="Hackathon Hackers" checked> Hackathon Hackers
+  <br>
+  <input type="radio" name="group_name" value="HH: What Are You Working On?"> HH: What Are You Working On?
+  <br>
+  <input type="radio" name="group_name" value="HH Design"> HH Design
+  <br>
+  <input type="radio" name="group_name" value="HH Hacker Problems"> HH Hacker Problems
+  <br>
+  <input type="radio" name="group_name" value="Hackathon Hackers EU"> Hackathon Hackers EU
+  <br>
+  <input type="radio" name="group_name" value="HH Data Hackers"> HH Data Hackers
+  <br>
+  <input type="radio" name="group_name" value="HH Webdev"> HH Webdev
+  <br>
+  <input type="radio" name="group_name" value="HH iOS"> HH iOS
+  <br>
+  <input type="radio" name="group_name" value="HH Throw a Hackathon"> HH Throw a Hackathon
+  <br>
+  <input type="radio" name="group_name" value="HH: Snackathon Snackers"> HH: Snackathon Snackers
+  <br>
+  <input type="radio" name="group_name" value="HH: VR"> HH: VR
+  <br>
+  <input type="radio" name="group_name" value="HH Free Stuff"> HH Free Stuff
+  <br>
+  <input type="radio" name="group_name" value="HH Growthhacking"> HH Growthhacking
+  <br>
+  <input type="radio" name="group_name" value="HH CTF"> HH CTF
+  <br>
+  <input type="radio" name="group_name" value="HH Canada Eh?"> HH Canada Eh?
+  <br>
+  <input type="radio" name="group_name" value="HH Skillshare"> HH Skillshare
+  <br>
+  <input type="radio" name="group_name" value="HH Blog Posts"> HH Blog Posts
+  <br>
+  <input type="radio" name="group_name" value="HH Connect"> HH Connect
+  <br>
+  <input type="radio" name="group_name" value="HH FIRST + VEX"> HH FIRST + VEX
+  <br>
+  <input type="radio" name="group_name" value="HH: Book Club"> HH: Book Club
+  <br>
+  <input type="radio" name="group_name" value="HH EdTech"> HH EdTech
+  <br>
+  <input type="radio" name="group_name" value="HH South"> HH South
+  <br>
+  <input type="radio" name="group_name" value="HH Python"> HH Python
+  <br>
+  <input type="radio" name="group_name" value="HH Texas"> HH Texas
+  <br>
+  <input type="radio" name="group_name" value="HH Social Good"> HH Social Good
+  <br>
+      <br>
+      <label>
+	<span>&nbsp;</span><input type="submit" value="Submit">
+      </label>
+      <br>
+
+</form>
+
+<!-- Part 3: submit new data -->
+
+    <p style="margin-bottom:5px"/>
+<center>
+    <h2 class="elegant-aero" style="text-align:center;display:inline-block;color:#FFFFFF;">&nbsp;Submit new Facebook graph node data&nbsp;</h2>
+</center>
+    <form action="/cgi-bin/yiqin/submit_new_data.pl" style="background:#FFFFFF;width:60%;margin:auto"  method="get" class="elegant-aero">
+<span>Facebook graph data is very complicated and has more than 20 properties. We are not going to provide inputs for all properties. Some of them are provided here. For those are not provided, we assign default values in perl script.</span>
+<br>
+<br>
+      <label> 
+	<span>Username:</span> <input type="text" name="from_name" value=""/>
+      </label>
+<br>
+<br>
+
+<span>Choose type:</span>
+  <br>
+  <input type="radio" name="type" value="like"> like
+  <br>
+  <input type="radio" name="type" value="comment"> comment
+  <br>
+  <input type="radio" name="type" value="status"> status
+  <br>
+  <input type="radio" name="type" value="link"> link
+  <br>
+<br>
+	<span>Message:</span> <input type="text" name="message" value=""/>
+
+<br>
+<br>
+      <label>
+	<span>&nbsp;</span><input type="submit" value="Submit">
+      </label>
+    </form>
+
+    <iframe frameBorder="0" name="results_iframe" style="width:100%"/>
+  </body>
+</html>
